@@ -1,0 +1,65 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<style>
+  .custom-bg {
+    background-color: blue;
+   
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .custom-card {
+    background-color: rgba(255, 228, 196, 0.8); /* Burlywood with transparency */
+    margin-left: 10%;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+
+  #signup-title {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+  }
+
+  #signup-form {
+    margin-top: 20px;
+  }
+
+  .signup-input {
+    margin-bottom: 20px;
+  }
+
+  #signup-button {
+    margin-top: 20px;
+  }
+</style>
+
+<div class="custom-bg">
+  <div class="custom-card">
+    <div class="row">
+      <div class="col-md-6 offset-md-3" id="signup-form">
+        <h1 id="signup-title"><b>Sign Up for wanderLust</b></h1>
+        <form action="/signup" method="POST" class="needs-validation" novalidate autocomplete="username">
+          <div class="mb-3 mt-3 signup-input">
+            <label for="username" class="form-label">Username</label>
+            <input name="username" type="text" class="form-control" required/>
+            <div class="valid-feedback">Username looks good!</div>
+          </div>
+          <div class="mb-3 signup-input">
+            <label for="email" class="form-label">Email</label>
+            <input name="email" type="email" class="form-control" required/>
+          </div>
+          <div class="mb-3 signup-input">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" type="password" id="password" class="form-control" autocomplete="current-password" required/>
+          </div>
+          <button type="submit" class="btn btn-success btn-block" id="signup-button">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

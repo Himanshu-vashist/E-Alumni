@@ -1,0 +1,51 @@
+
+.navbar {
+    height: 5rem ;
+    background-color:white;
+}
+.container-fluid{
+    background-color: whitesmoke;
+}
+.fa-compass{
+    color: brown;
+    font-size: 2rem;
+
+}
+
+.footer{
+    background-color: aliceblue;
+    justify-content: center;
+    flex-wrap: wrap;
+   border-radius:  2px;
+   border-color: black;
+    
+}
+
+/* cards */
+.listing-card{
+    border: none !important;
+    margin-bottom: 2rem ;
+} 
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0 !important;
+}
+.card-text p {
+  font-weight: 400;
+}
+.listing-link{
+    text-decoration: none;
+}
+.card-image-overlay {
+    opacity: 0;
+}
+
+.card-image-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}

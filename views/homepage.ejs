@@ -1,0 +1,243 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+    body {
+        
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .hero-section {
+        background: linear-gradient(135deg, #007bff, #6f42c1); /* Gradient background */
+        color: #fff;
+        padding: 100px 20px;
+        text-align: center;
+        margin-top: 5%;
+    }
+
+    .hero-section h1 {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .hero-section p {
+        font-size: 1.5em;
+        margin-bottom: 40px;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .btn-action {
+        padding: 15px 30px;
+        font-size: 1.2em;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        min-width: 200px;
+        text-align: center;
+    }
+
+    .btn-register {
+        background-color: #28a745;
+    }
+
+    .btn-register:hover {
+        background-color: #218838;
+    }
+
+    .btn-login {
+        background-color: #ffc107;
+        color: #343a40;
+    }
+
+    .btn-login:hover {
+        background-color: #e0a800;
+    }
+
+    .content-section {
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .content-section h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: #343a40;
+    }
+
+    .content-section p {
+        font-size: 1.2em;
+        margin-bottom: 40px;
+        color: #6c757d;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: left;
+        padding: 20px;
+    }
+
+    .card h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #343a40;
+    }
+
+    .card p {
+        font-size: 1em;
+        color: #6c757d;
+    }
+
+    .stats-container {
+        background-color: #343a40;
+        color: #fff;
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .stats-container h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .stats-grid {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .stat-item {
+        font-size: 2em;
+        color: #ffc107;
+    }
+
+    .stat-item p {
+        margin-top: 10px;
+        font-size: 1.2em;
+        color: #fff;
+    }
+</style>
+
+<body>
+
+<div class="hero-section">
+    <h1>Welcome to E-Alumni Community</h1>
+    <p>Explore the Community with us</p>
+    <div class="btn-container">
+        <a href="#register" class="btn-action btn-register">Register</a>
+        <a href="#login" class="btn-action btn-login">Login</a>
+    </div>
+</div>
+
+<div class="content-section" id="register">
+    <h2>Register</h2>
+    <p>Join our community by registering as an Admin or Student.</p>
+    <div class="btn-container">
+        <a href="/signup" class="btn-action btn-register">Register as Admin</a>
+        <a href="/signup" class="btn-action btn-register">Register as Student</a>
+    </div>
+</div>
+
+<div class="content-section" id="login">
+    <h2>Login</h2>
+    <p>Already a member? Login as a Student or Alumni.</p>
+    <div class="btn-container">
+        <a href="/login" class="btn-action btn-login">Login as Student</a>
+        <a href="/login" class="btn-action btn-login">Login as Alumni</a>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2>Latest Alumni Posts</h2>
+    <div class="grid-container">
+        <div class="card">
+            <h3>Alumni Post 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+        </div>
+        <div class="card">
+            <h3>Alumni Post 2</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+        </div>
+        <div class="card">
+            <h3>Alumni Post 3</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2>Latest Alumni News</h2>
+    <div class="grid-container">
+        <div class="card">
+            <h3>News 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+        </div>
+        <div class="card">
+            <h3>News 2</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+        </div>
+        <div class="card">
+            <h3>News 3</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2>Upcoming Alumni Events</h2>
+    <div class="grid-container">
+        <div class="card">
+            <h3>Event 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+        </div>
+        <div class="card">
+            <h3>Event 2</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+        </div>
+        <div class="card">
+            <h3>Event 3</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+        </div>
+    </div>
+</div>
+
+<div class="stats-container">
+    <h2>Community Statistics</h2>
+    <div class="stats-grid">
+        <div class="stat-item">
+            <span>50</span>
+            <p>Registered Admins</p>
+        </div>
+        <div class="stat-item">
+            <span>1500+</span>
+            <p>Alumni Members</p>
+        </div>
+        <div class="stat-item">
+            <span>200+</span>
+            <p>Posts & Events</p>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (optional, if you need Bootstrap features) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+
+</body>

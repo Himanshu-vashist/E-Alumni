@@ -1,0 +1,141 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<style>
+  /* Your existing CSS styles */
+  #filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    background-color: #f8f8f8;
+  }
+
+  .filter {
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+
+  .filter:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+
+  .filter p {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+
+  .filter i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tax-info {
+    display: none;
+  }
+
+  .tax-toggle {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 3.25rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+  }
+</style>
+
+<div id="filters">
+  <!-- Your filter buttons go here -->
+  <div class="filter">
+    <div><i class="fa-solid fa-fire"></i></div>
+    <p>CSE</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-campground"></i></div>
+    <p>IT</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-fire"></i></div>
+    <p>ECE</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-campground"></i></div>
+    <p>EE</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-fire"></i></div>
+    <p>CHE</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-campground"></i></div>
+    <p>MECH</p>
+  </div>
+  
+  <div class="filter">
+    <div><i class="fa-solid fa-campground"></i></div>
+    <p>ALML</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-fire"></i></div>
+    <p>BIO</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-campground"></i></div>
+    <p>AIEE</p>
+  </div>
+  <!-- Add other filters as needed -->
+   
+  <div class="tax-toggle">
+    <div class="form-check-reverse form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Date of Join </label>
+    </div>
+  </div>
+  
+</div>
+
+<%= success %>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+  <% for(let listing of allListings) { %>
+    <a href="/listings/<%= listing._id %>" class=" ">
+      <div class="card col listing card">
+        <img src="<%= listing.image.url %>" 
+             class="card-img-top" 
+             alt="<%= listing.name %>'s Image" 
+             style="height: 20rem">
+        
+        <div class="card-image-overlay"></div> 
+
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.name %></b> <br/>
+            <%= listing.degree %> <br/>
+            <% if (listing && listing.price) { %>
+              &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+              <i class="tax-info">&nbsp; &nbsp;+18% GST</i>
+            <% } %>
+          </p>
+        </div>
+      </div>
+    </a>
+  <% } %>
+</div>
+
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for(let info of taxInfo) {
+      info.style.display = info.style.display === "inline" ? "none" : "inline";
+    }
+    console.log("clicked");
+  });
+</script>
