@@ -1,0 +1,15 @@
+<%- include('../layouts/boilerplate') %> <!-- Include layout boilerplate -->
+
+<h2>All Posts</h2>
+<div class="posts-container">
+    <% if (posts.length > 0) { %>
+        <% posts.forEach(post => { %>
+            <div class="post">
+                <h3><%= post.title %></h3>
+                <p><%= post.content %></p>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No posts available.</p>
+    <% } %>
+</div>

@@ -7,6 +7,8 @@ const express = require("express");
 const app=express();
 const mongoose = require("mongoose");
 
+const postsRoutes = require('./routes/posts');
+
 
 const Listing=require("./models/listing.js");
 const methodOverride= require("method-override");
@@ -38,6 +40,8 @@ app.use(methodOverride("_method"));
 app.engine('ejs',ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
+app.use('/posts', postsRoutes);
+
 const store = MongoStore.create({
   //change
   mongoUrl: MONGO_URL,
@@ -52,6 +56,7 @@ store.on("error" , ()=>{
   console.log("error in mongo session store", err);
 });
 
+/*
 const sessionOptions ={
   store,
   secret :  process.env.SECRET,
@@ -63,6 +68,19 @@ const sessionOptions ={
     httpOnly:true,
   }
 }; 
+*/
+const sessionOptions = {
+  store: store, // Ensure `store` is properly defined elsewhere
+  secret: process.env.SECRET || 'defaultSecret', // Fallback in case `process.env.SECRET` is undefined
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production' // Ensure cookies are only sent over HTTPS in production
+  }
+};
+
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -131,6 +149,22 @@ main()
     //res.redirect("/listings");
     res.render("homepage.ejs");
   })
+
+  app.get("/new",(req,res,next)=>{
+    //res.redirect("/listings");
+    res.render("listings/newpost.ejs");
+  })
+
+  app.get("/donation",(req,res,next)=>{
+    //res.redirect("/listings");
+    res.render("listings/donation.ejs");
+  })
+
+
+
+
+
+
 
 app.use("/listings",listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);

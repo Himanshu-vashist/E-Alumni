@@ -2,22 +2,46 @@
 
 
 <style>
-  @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
-  .menu, .menu-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      background: #f7f7f7;
-      z-index: 10;  
-      overflow: hidden;
-      box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
-     
-  }
+   
+   @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
 
+.menu, .menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    max-height: 100%; /* Set a max height for the navbar */
+    width: 100px; /* Adjust the width to your preference */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7;
+    z-index: 10;
+    overflow-y: auto; /* Enable vertical scrolling */
+    box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
+}
+
+.menu .logo1  {
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 2rem;
+    position: fixed;
+    margin-left: 93%;
+   font-size: 10px; /* Adjust icon size */
+  
+    border-radius: 50%; /* Make the background circular */
+    padding: 2px; /* Padding inside the circular background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+
+}
+
+
+
+
+
+
+
+  
 
   .menu li a {
       display: block;
@@ -31,6 +55,7 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       transition: background 0.1s ease-in-out;
   }
+  
   .menu li a:before {
       font-family: "Font Awesome 5 Free";
       speak: none;
@@ -173,29 +198,37 @@
           height: 3.5em;
       }
   }
-  .logo i {
-    font-size: 40px; /* Set the icon size */
-    color: #033f72; /* Set the icon color */
-    line-height: 5em; /* Center the icon vertically if needed */
-}
+  
 
 </style>
 
 
 
   <ul class="menu">
-    <li class="logo">
-        <a  href="/listings">
+    <li class="logo1">
+        <a href="/">
             <i class="fa-solid fa-graduation-cap"></i>
         </a>
     </li>
     
+    <li class="logo">
+        
+    
+        
+  
+    
     
     <li title="home"><a href="#" class="menu-button home">menu</a></li>
     <li title="search"><a href="#" class="search">search</a></li>
-    <li title="pencil"><a href="#" class="pencil">pencil</a></li>
-    <li title="portal donation"><a href="#" class="portal-donation">Portal Donation</a></li>
+    <li title="pencil"><a href="/new" class="pencil">pencil</a></li>
+    <li title="portal donation"><a href="/donation" class="portal-donation">Portal Donation</a></li>
     <li title="posts"><a href="#" class="posts">Posts</a></li>
+    <li title="Chatbot">
+        <a href="#chat" class="chatbot">
+            <i class="fas fa-comments icon"></i>Chatbot
+        </a>
+    </li>
+
     <li title="success story"><a href="#" class="success-story">Success Story</a></li>
     <li title="event"><a href="#" class="event">Event</a></li>
     <li title="chatbot"><a href="#" class="chatbot">Chatbot</a></li>
