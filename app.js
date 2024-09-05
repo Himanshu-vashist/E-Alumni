@@ -150,3 +150,14 @@ app.use((err,req,res,next)=>{
   app.listen(8080,()=>{
     console.log("server is listening on port 8080");
   });
+
+  app.get('/someRoute', (req, res) => {
+    res.render('someTemplate', { currUser: req.user });
+});
+
+app.use((req, res, next) => {
+  res.locals.currUser = req.user;
+  next();
+});
+
+
