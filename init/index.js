@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const MONGO_URL ="mongodb://localhost:27017/E-ALUMNI";
 const initData = require("./data.js");
-const Listing=require("../models/listing.js");
+const Listing=require("./models/listing.js");
 async function main(){
   await mongoose.connect(MONGO_URL);
 }

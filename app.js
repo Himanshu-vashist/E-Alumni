@@ -30,6 +30,10 @@ const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const User=require("./models/user.js");
+const axios = require('axios');
+
+
+
 
 const MONGO_URL ="mongodb://localhost:27017/E-ALUMNI";
 
@@ -39,6 +43,9 @@ app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 app.engine('ejs',ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
+
+const feedbackRoutes = require("./routes/feedback");
+app.use("/", feedbackRoutes);
 
 app.use('/posts', postsRoutes);
 
@@ -160,7 +167,10 @@ main()
     res.render("listings/donation.ejs");
   })
 
-
+  app.get("/helpbot",(req,res,next)=>{
+    //res.redirect("/listings");
+    res.render("listings/helpbot.ejs");
+  })
 
 
 
@@ -180,6 +190,10 @@ app.use((err,req,res,next)=>{
   res.status(statusCode).render("error.ejs",{message});
   
 });
+
+
+
+
 
   app.listen(8080,()=>{
     console.log("server is listening on port 8080");

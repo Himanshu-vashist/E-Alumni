@@ -21,7 +21,7 @@
     box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
 }
 
-.menu .logo1  {
+.logo1  {
     display: inline-block;
     text-decoration: none;
     margin-top: 2rem;
@@ -32,6 +32,7 @@
     border-radius: 50%; /* Make the background circular */
     padding: 2px; /* Padding inside the circular background */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background 0.2s ease-in-out;
 
 }
 
@@ -205,21 +206,22 @@
 
 
   <ul class="menu">
-    <li class="logo1">
-        <a href="/">
-            <i class="fa-solid fa-graduation-cap"></i>
-        </a>
-    </li>
+    
     
     <li class="logo">
         
-    
-        
+        <li class="logo1">
+            <a href="https://ai.visheshpandey.com/">
+                <i class="fa-solid fa-graduation-cap">?</i>
+            </a>
+        </li>
   
     
     
     <li title="home"><a href="#" class="menu-button home">menu</a></li>
-    <li title="search"><a href="#" class="search">search</a></li>
+    <li title="about"><a href="#" class="active about">about</a></li>
+    <li title="contact"><a href="#" class="contact">contact</a></li>
+    
     <li title="pencil"><a href="/new" class="pencil">pencil</a></li>
     <li title="portal donation"><a href="/donation" class="portal-donation">Portal Donation</a></li>
     <li title="posts"><a href="#" class="posts">Posts</a></li>
@@ -244,26 +246,36 @@
 <ul class="menu-bar">
     <li><a href="#" class="menu-button">Menu</a></li>
     <li><a href="/">Home</a></li>
-  
+    <% if(!currUser) { %> 
+        <li><a class="nav-link active" aria-current="page" href="/signup"><b>Sign Up</b></a></li> 
+         <li><a class="nav-link" href="/login"><b>Log in</b></a></li>
+         <% } %>
+         <% if(currUser) { %> 
+         
+         <li><a class="nav-link" href="/logout">Logout</a></li>
+      <% } %>
+      <li><a class="nav-link" href="https://ai.visheshpandey.com/">Help-Bot</a></li>
     <li> <a class="navbar-brand" href="/listings">Profile</a></li>
     <li> <a class="navbar-brand" href="/listings/new">Add Profile</a></li>
     <li><a href="#">Editorial</a></li>
     <li><a href="#">About</a></li>
-    <% if(!currUser) { %> 
-     <li><a class="nav-link active" aria-current="page" href="/signup"><b>Sign Up</b></a></li> 
-      <li><a class="nav-link" href="/login"><b>Log in</b></a></li>
-      <% } %>
-      <% if(currUser) { %> 
-      
-      <li><a class="nav-link" href="/logout">Logout</a></li>
-   <% } %>
+   
 </ul>
+
+
+
 
 <!-- Include jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function(){
         $(".menu-button").click(function(){
+            $(".menu-bar").toggleClass("open");
+        });
+    });
+
+    $(document).ready(function(){
+        $(".active").click(function(){
             $(".menu-bar").toggleClass("open");
         });
     });

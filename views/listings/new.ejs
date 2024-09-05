@@ -2,64 +2,64 @@
 <body>
   <div class="row">
     <div class="col-8 offset-2">
-    <br/><br/>
-    <h3>Create Your Profile 👤</h3>
-    <form 
-        method="post"
-        action="/listings"
-        novalidate 
-        class="needs-validation"
-        enctype="multipart/form-data">
-       
-       <div class="mb-3">
-            <label for="title" class="form-label">Name</label> 
-            <input name="listing[title]" placeholder="enter title" type="text" class="form-control" required />
-        <div class="valid-feedback"> Name looks good!</div>    
-        </div> 
+      <br/><br/>
+      <h3>Alumni Registration 👩‍🎓👨‍🎓</h3>
+      <form 
+          method="post"
+          action="/listings"
+          novalidate 
+          class="needs-validation"
+          enctype="multipart/form-data">
          
-        
-        <div class="mb-3">
-          <label for="description" class="form-label">Bio</label>
-            <textarea name="listing[description]" class="form-control" required ></textarea>
-            <div class="invalid-feedback"> Please enter a short description!</div> 
-        </div>
          <div class="mb-3">
-        <label for="image" class="form-label">Upload Your Image</label>
-        <input 
-           name="listing[image]" 
-           type="file" 
-           class="form-control" />
-           required
-       </div>
-       
-        <div class="row">
-          <!--
-            <div class="mb-3 col-4">
-              <label for="price" class="form-label">Price</label>
-              <input name="listing[price]" placeholder="enter price"  class="form-control" required />
-              <div class="invalid-feedback"> Please enter a valid price!</div>    
-            </div>
-          -->
-            <div class="mb-3 col-8">
-              <label for="country" class="form-label">Country</label>
-            <input name="listing[country]" placeholder="enter country" type="text" class="form-control" required />
-            <div class="invalid-feedback"> Please enter a valid country!</div> 
-        </div>
-        </div>
+              <label for="name" class="form-label">Full Name</label> 
+              <input name="listing[name]" placeholder="Enter your full name" type="text" class="form-control" required />
+          <div class="valid-feedback">Name looks good!</div>    
+          <div class="invalid-feedback">Please enter your full name!</div>    
+         </div> 
+           
+          
+          <div class="mb-3">
+            <label for="bio" class="form-label">Short Bio</label>
+              <textarea name="listing[bio]" placeholder="Tell us something about yourself" class="form-control" required ></textarea>
+              <div class="invalid-feedback">Please enter a short bio!</div> 
+          </div>
+          
+          <div class="mb-3">
+              <label for="graduationYear" class="form-label">Graduation Year</label> 
+              <input name="listing[graduationYear]" placeholder="Enter your graduation year" type="number" class="form-control" required />
+              <div class="invalid-feedback">Please enter your graduation year!</div> 
+          </div> 
 
-    
-        <div class="mb-3">
-          <label for="location" class="form-label">Location</label>
-          <input name="listing[location]" placeholder="enter location" type="text" class="form-control" required />
-          <div class="invalid-feedback">Please enter the valid location</div>
+          <div class="mb-3">
+              <label for="degree" class="form-label">Degree</label> 
+              <input name="listing[degree]" placeholder="Enter your degree (e.g., B.Sc., M.A., Ph.D.)" type="text" class="form-control" required />
+              <div class="invalid-feedback">Please enter your degree!</div> 
+          </div> 
+          
+          <div class="mb-3">
+              <label for="image" class="form-label">Upload Your Profile Picture</label>
+              <input name="listing[image]" type="file" class="form-control" required />
+              <div class="invalid-feedback">Please upload your profile picture!</div>    
+          </div>
+         
+          <div class="row">
+              <div class="mb-3 col-6">
+                <label for="country" class="form-label">Country</label>
+                <input name="listing[country]" placeholder="Enter your country" type="text" class="form-control" required />
+                <div class="invalid-feedback">Please enter your country!</div> 
+              </div>
+
+              <div class="mb-3 col-6">
+                <label for="location" class="form-label">Current City</label>
+                <input name="listing[location]" placeholder="Enter your current city" type="text" class="form-control" required />
+                <div class="invalid-feedback">Please enter your current city!</div> 
+              </div>
+          </div>
+
+          <button type="submit" class="btn btn-dark">Register</button>
+          <br/><br/>
         </div>
-       
-        
-        <button type="submit" class="btn btn-dark">Add</button>
-        <br/><br/>
       </div>
-      </div>
-        </form>
-    
-       
+      </form>
 </body>

@@ -1,0 +1,48 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+<div>
+    <h2>Ask Google Gemini</h2>
+    <form id="geminiForm">
+        <input type="text" id="prompt" placeholder="Enter your prompt" required>
+        <button type="submit" id="submitBtn">Generate</button>
+    </form>
+    <p id="response"></p>
+</div>
+
+<script>
+    document.getElementById('geminiForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        
+        const prompt = document.getElementById('prompt').value;
+        const submitBtn = document.getElementById('submitBtn');
+        const responseElement = document.getElementById('response');
+        
+        // Clear previous response and disable the button
+        responseElement.innerText = "Generating response...";
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch('/generate-text', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ prompt: prompt }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch response');
+            }
+
+            const data = await response.json();
+            responseElement.innerText = data.generatedText;
+        } catch (error) {
+            console.error(error);
+            responseElement.innerText = 'Error: Could not generate a response. Please try again.';
+        } finally {
+            // Re-enable the button after the response is processed
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+</body>

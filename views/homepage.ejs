@@ -1,7 +1,7 @@
-<% layout("/layouts/boilerplate.ejs") %>
+<%- layout("/layouts/boilerplate.ejs") %>
+
 <style>
     body {
-        
         margin: 0;
         padding: 0;
         font-family: 'Arial', sans-serif;
@@ -133,111 +133,167 @@
         font-size: 1.2em;
         color: #fff;
     }
+
+    .posts-section {
+        position: relative;
+        bottom: 0;
+        left: 40px; /* Adjust based on your menu width */
+        height: 20%; /* Height for the horizontal scroll area */
+        width: calc(100% - 100px); /* Full width minus the menu width */
+        background: #f7f7f7;
+        overflow-x: auto; /* Horizontal scrolling */
+        overflow-y: hidden; /* Disable vertical scroll */
+        white-space: nowrap; /* Ensure all posts are in one line */
+        padding: 1rem;
+        box-shadow: 0 -2px 18px rgba(0, 0, 0, 0.26);
+    }
+
+
+    /* Style for Individual Post */
+    .post {
+        display: inline-block; /* Ensures posts are inline */
+        vertical-align: top; /* Align posts to top */
+        width: 300px; /* Width of each post */
+        height: 100%; /* Ensures consistent height */
+        margin-right: 1rem;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .post h4 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .post p {
+        margin: 0.5rem 0 0;
+        color: #555;
+    }
+
+    /* "View More" Button */
+    .view-more {
+        display: inline-block;
+        text-align: center;
+        padding: 1rem;
+        background: #267fdd;
+        color: white;
+        cursor: pointer;
+        border-radius: 8px;
+        height: 100%;
+    }
 </style>
 
 <body>
-
-<div class="hero-section">
-    <h1>Welcome to E-Alumni Community</h1>
-    <p>Explore the Community with us</p>
-    <div class="btn-container">
-        <a href="#register" class="btn-action btn-register">Register</a>
-        <a href="#login" class="btn-action btn-login">Login</a>
-    </div>
-</div>
-
-<div class="content-section" id="register">
-    <h2>Register</h2>
-    <p>Join our community by registering as an Admin or Student.</p>
-    <div class="btn-container">
-        <a href="/signup" class="btn-action btn-register">Register as Admin</a>
-        <a href="/signup" class="btn-action btn-register">Register as Student</a>
-    </div>
-</div>
-
-<div class="content-section" id="login">
-    <h2>Login</h2>
-    <p>Already a member? Login as a Student or Alumni.</p>
-    <div class="btn-container">
-        <a href="/login" class="btn-action btn-login">Login as Student</a>
-        <a href="/login" class="btn-action btn-login">Login as Alumni</a>
-    </div>
-</div>
-
-<div class="content-section">
-    <h2>Latest Alumni Posts</h2>
-    <div class="grid-container">
-        <div class="card">
-            <h3>Alumni Post 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
-        </div>
-        <div class="card">
-            <h3>Alumni Post 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
-        </div>
-        <div class="card">
-            <h3>Alumni Post 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+    <div class="hero-section">
+        <h1>Welcome to E-Alumni Community</h1>
+        <p>Connecting Alumni, Sharing Knowledge, and Building a Network</p>
+        <div class="btn-container">
+            <a href="#register" class="btn-action btn-register">Register</a>
+            <a href="#login" class="btn-action btn-login">Login</a>
         </div>
     </div>
-</div>
 
-<div class="content-section">
-    <h2>Latest Alumni News</h2>
-    <div class="grid-container">
-        <div class="card">
-            <h3>News 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
-        </div>
-        <div class="card">
-            <h3>News 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
-        </div>
-        <div class="card">
-            <h3>News 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+    <div class="content-section" id="register">
+        <h2>Join Us</h2>
+        <p>Become a part of our vibrant alumni community today.</p>
+        <div class="btn-container">
+            <a href="/signup/admin" class="btn-action btn-register">Register as Admin</a>
+            <a href="/signup/student" class="btn-action btn-register">Register as Student</a>
         </div>
     </div>
-</div>
 
-<div class="content-section">
-    <h2>Upcoming Alumni Events</h2>
-    <div class="grid-container">
-        <div class="card">
-            <h3>Event 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
-        </div>
-        <div class="card">
-            <h3>Event 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
-        </div>
-        <div class="card">
-            <h3>Event 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum ligula.</p>
+    <div class="content-section" id="login">
+        <h2>Already a Member?</h2>
+        <p>Login to access exclusive alumni content and features.</p>
+        <div class="btn-container">
+            <a href="/login/student" class="btn-action btn-login">Login as Student</a>
+            <a href="/login/alumni" class="btn-action btn-login">Login as Alumni</a>
         </div>
     </div>
-</div>
 
-<div class="stats-container">
-    <h2>Community Statistics</h2>
-    <div class="stats-grid">
-        <div class="stat-item">
-            <span>50</span>
-            <p>Registered Admins</p>
+    <div class="posts-section">
+        <h2>Latest Alumni Posts</h2>
+        <div class="post">
+            <h4>Post Title 1</h4>
+            <p>Short description of post 1...</p>
         </div>
-        <div class="stat-item">
-            <span>1500+</span>
-            <p>Alumni Members</p>
+        <div class="post">
+            <h4>Post Title 2</h4>
+            <p>Short description of post 2...</p>
         </div>
-        <div class="stat-item">
-            <span>200+</span>
-            <p>Posts & Events</p>
+        <div class="post">
+            <h4>Post Title 3</h4>
+            <p>Short description of post 3...</p>
+        </div>
+        <div class="post">
+            <h4>Post Title 4</h4>
+            <p>Short description of post 4...</p>
+        </div>
+        <div class="post">
+            <h4>Post Title 5</h4>
+            <p>Short description of post 5...</p>
+        </div>
+        <div class="view-more">View More Posts</div>
+    </div>
+
+    <div class="content-section">
+        <h2>Latest Alumni News</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Annual Alumni Meet</h3>
+                <p>Details about our upcoming annual alumni meeting and events.</p>
+            </div>
+            <div class="card">
+                <h3>Alumni Awards</h3>
+                <p>Read about the awards and recognitions given to outstanding alumni.</p>
+            </div>
+            <div class="card">
+                <h3>Alumni Contributions</h3>
+                <p>Learn about the contributions of alumni to various causes and initiatives.</p>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Bootstrap JS (optional, if you need Bootstrap features) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <div class="content-section">
+        <h2>Upcoming Alumni Events</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Career Workshop</h3>
+                <p>Join us for a workshop on career development and skill enhancement.</p>
+            </div>
+            <div class="card">
+                <h3>Networking Event</h3>
+                <p>Meet fellow alumni and expand your professional network.</p>
+            </div>
+            <div class="card">
+                <h3>Annual Reunion</h3>
+                <p>Celebrate our annual reunion with various activities and gatherings.</p>
+            </div>
+        </div>
+    </div>
 
+    <div class="stats-container">
+        <h2>Community Statistics</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span>50</span>
+                <p>Registered Admins</p>
+            </div>
+            <div class="stat-item">
+                <span>1500+</span>
+                <p>Alumni Members</p>
+            </div>
+            <div class="stat-item">
+                <span>200+</span>
+                <p>Posts & Events</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional, if you need Bootstrap features) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
 </body>

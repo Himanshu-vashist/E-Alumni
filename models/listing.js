@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const reviews = require("./review");
-const { types } = require("joi");
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
@@ -8,45 +6,35 @@ const listingSchema = new Schema({
     type: String,
     required: true,
   },
-  bio:{
-    type: String
+  bio: {
+    type: String,
+    required: true,
   },
   image: {
     url: String,
     filename: String,
-   },
-   graduationYear: {
-     type:Number,
   },
-  degree: String,
-  location: String,
-  country: String,
-  
-  reviews: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Review"
-    }
-  ],
-  owner:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"User",
+  graduationYear: {
+    type: Number,
+    required: true,
   },
-  category:{
-      type:String,
-      enum: ["mountains", "arctic", "fire", "bed", "mountain-city", "fort-awesome", "person-swimming", "campground", "tractor", "snowflake"]
-   
-  }
-
+  degree: {
+    type: String,
+    required: true,
+  },
+  location: {
+    type: String,
+    required: true,
+  },
+  country: {
+    type: String,
+    required: true,
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
-
-
-listingSchema.post("findOneAndDelete", async(listing)=>{
-  if(listing) {
-  await reviews.deleteMany({_id: {$in: listing.reviews}});
-} 
-}
-);
 
 const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;
