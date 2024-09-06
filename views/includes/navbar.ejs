@@ -2,236 +2,280 @@
 
 
 <style>
-  @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
-  .menu, .menu-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      background: #f7f7f7;
-      z-index: 10;  
-      overflow: hidden;
-      box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
+   
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
+ 
+ .menu, .menu-bar {
+     position: fixed;
+     top: 0;
+     left: 0;
+     height: 100%;
+     max-height: 100%; /* Set a max height for the navbar */
+     width: 100px; /* Adjust the width to your preference */
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     background: #f7f7f7;
+     z-index: 10;
+     overflow-y: auto; /* Enable vertical scrolling */
+     box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
+ }
+ 
+ .logo1  {
+     display: inline-block;
+     text-decoration: none;
+     margin-top: 2rem;
+     position: fixed;
+     margin-left: 93%;
+    font-size: 10px; /* Adjust icon size */
+   
+     border-radius: 50%; /* Make the background circular */
+     padding: 2px; /* Padding inside the circular background */
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+     transition: background 0.2s ease-in-out;
+ 
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+ 
+   .menu li a {
+       display: block;
+       text-indent: -500em;
+       height: 5em;
+       width: 5em;
+       line-height: 5em;
+       text-align: center;
+       color: #72739f;
+       position: relative;
+       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+       transition: background 0.1s ease-in-out;
+   }
+   
+   .menu li a:before {
+       font-family: "Font Awesome 5 Free";
+       speak: none;
+       text-indent: 0em;
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       font-size: 1.4em;
+       font-weight: 900;
+   }
+   .menu li a.search:before {
+     content: "\f002"; /* Search icon */
+ }
+ 
+ .menu li a.archive:before {
+     content: "\f187"; /* Archive icon */
+ }
+ 
+ .menu li a.pencil:before {
+     content: "\f040"; /* Pencil icon */
+ }
+ 
+ .menu li a.about:before {
+     content: "\f007"; /* User icon */
+ }
+ 
+ .menu li a.home:before {
+     content: "\f015"; /* Home icon */
+ }
+ 
+ .menu li a.contact:before {
+     content: "\f003"; /* Contact icon */
+ }
+ 
+ /* New icons for the additional items */
+ .menu li a.portal-donation:before {
+     content: "\f4c3"; /* Donate icon */
+ }
+ 
+ .menu li a.posts:before {
+     content: "\f044"; /* Pen icon for posts */
+ }
+ 
+ .menu li a.success-story:before {
+     content: "\f091"; /* Trophy icon for success story */
+ }
+ 
+ .menu li a.event:before {
+     content: "\f073"; /* Calendar icon for events */
+ }
+ 
+ .menu li a.chatbot:before {
+     content: "\f27a"; /* Comment-dots icon for chatbot */
+ }
+ 
+ .menu li a.time-capsule:before {
+     content: "\f1f0"; /* Clock icon for time capsule */
+ }
+   .menu-bar li a:hover,
+   .menu li a:hover,
+   .menu li:first-child a {
+       background: #267fdd;
+       color: #fff;
+   }
+   .menu-bar {
+       overflow: hidden;
+       left: 5em;
+       z-index: 5;
+       width: 0;
+       height: 0;
+       transition: all 0.1s ease-in-out;
+   }
+   .menu-bar li a {
+       display: block;
+       height: 4em;
+       line-height: 4em;
+       text-align: center;
+       color: #72739f;
+       text-decoration: none;  
+       position: relative;
+       font-family: verdana;
+       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+       transition: background 0.1s ease-in-out;
+   }
+   .menu-bar li:first-child a {
+       height: 5em;
+       background: #267fdd;
+       color: #fff;    
+       line-height: 5em;
+   }
+   
+   .para {
+       color: #033f72;
+       padding-left: 100px;
+       font-size: 3em;
+       margin-bottom: 20px;
+   }
+   .open {
+       width: 10em;
+       height: 100%;
+   }
+   @media all and (max-width: 500px) {
+       .container {
+           margin-top: 100px;
+       }
+       .menu {
+           height: 5em;
+           width: 100%;
+       }
+       .menu li {
+           display: inline-block;
+           float: left;
+       }
+       .menu-bar li a {
+           width: 100%;
+       }
+       .menu-bar {
+           width: 100%;
+           left: 0;
+           height: 0;
+       }
+       .open {
+           width: 100%;
+           height: auto;
+       }
+       .para {
+           padding-left: 5px;
+       }  
+   }
+   @media screen and (max-height: 34em) {
+       .menu li,
+       .menu-bar {
+           font-size: 70%;
+       }
+   }
+   @media screen and (max-height: 34em) and (max-width: 500px) {
+       .menu {
+           height: 3.5em;
+       }
+   }
+   
+ 
+ </style>
+ 
+ 
+ 
+   <ul class="menu">
      
-  }
-
-
-  .menu li a {
-      display: block;
-      text-indent: -500em;
-      height: 5em;
-      width: 5em;
-      line-height: 5em;
-      text-align: center;
-      color: #72739f;
-      position: relative;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      transition: background 0.1s ease-in-out;
-  }
-  .menu li a:before {
-      font-family: "Font Awesome 5 Free";
-      speak: none;
-      text-indent: 0em;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      font-size: 1.4em;
-      font-weight: 900;
-  }
-  .menu li a.search:before {
-    content: "\f002"; /* Search icon */
-}
-
-.menu li a.archive:before {
-    content: "\f187"; /* Archive icon */
-}
-
-.menu li a.pencil:before {
-    content: "\f040"; /* Pencil icon */
-}
-
-.menu li a.about:before {
-    content: "\f007"; /* User icon */
-}
-
-.menu li a.home:before {
-    content: "\f015"; /* Home icon */
-}
-
-.menu li a.contact:before {
-    content: "\f003"; /* Contact icon */
-}
-
-/* New icons for the additional items */
-.menu li a.portal-donation:before {
-    content: "\f4c3"; /* Donate icon */
-}
-
-.menu li a.posts:before {
-    content: "\f044"; /* Pen icon for posts */
-}
-
-.menu li a.success-story:before {
-    content: "\f091"; /* Trophy icon for success story */
-}
-
-.menu li a.event:before {
-    content: "\f073"; /* Calendar icon for events */
-}
-
-.menu li a.chatbot:before {
-    content: "\f27a"; /* Comment-dots icon for chatbot */
-}
-
-.menu li a.time-capsule:before {
-    content: "\f1f0"; /* Clock icon for time capsule */
-}
-  .menu-bar li a:hover,
-  .menu li a:hover,
-  .menu li:first-child a {
-      background: #267fdd;
-      color: #fff;
-  }
-  .menu-bar {
-      overflow: hidden;
-      left: 5em;
-      z-index: 5;
-      width: 0;
-      height: 0;
-      transition: all 0.1s ease-in-out;
-  }
-  .menu-bar li a {
-      display: block;
-      height: 4em;
-      line-height: 4em;
-      text-align: center;
-      color: #72739f;
-      text-decoration: none;  
-      position: relative;
-      font-family: verdana;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      transition: background 0.1s ease-in-out;
-  }
-  .menu-bar li:first-child a {
-      height: 5em;
-      background: #267fdd;
-      color: #fff;    
-      line-height: 5em;
-  }
-  
-  .para {
-      color: #033f72;
-      padding-left: 100px;
-      font-size: 3em;
-      margin-bottom: 20px;
-  }
-  .open {
-      width: 10em;
-      height: 100%;
-  }
-  @media all and (max-width: 500px) {
-      .container {
-          margin-top: 100px;
-      }
-      .menu {
-          height: 5em;
-          width: 100%;
-      }
-      .menu li {
-          display: inline-block;
-          float: left;
-      }
-      .menu-bar li a {
-          width: 100%;
-      }
-      .menu-bar {
-          width: 100%;
-          left: 0;
-          height: 0;
-      }
-      .open {
-          width: 100%;
-          height: auto;
-      }
-      .para {
-          padding-left: 5px;
-      }  
-  }
-  @media screen and (max-height: 34em) {
-      .menu li,
-      .menu-bar {
-          font-size: 70%;
-      }
-  }
-  @media screen and (max-height: 34em) and (max-width: 500px) {
-      .menu {
-          height: 3.5em;
-      }
-  }
-  .logo i {
-    font-size: 40px; /* Set the icon size */
-    color: #033f72; /* Set the icon color */
-    line-height: 5em; /* Center the icon vertically if needed */
-}
-
-</style>
-
-
-
-  <ul class="menu">
-    <li class="logo">
-        <a  href="/listings">
-            <i class="fa-solid fa-graduation-cap"></i>
-        </a>
-    </li>
-    
-    
-    <li title="home"><a href="#" class="menu-button home">menu</a></li>
-    <li title="search"><a href="#" class="search">search</a></li>
-    <li title="pencil"><a href="#" class="pencil">pencil</a></li>
-    <li title="portal donation"><a href="#" class="portal-donation">Portal Donation</a></li>
-    <li title="posts"><a href="#" class="posts">Posts</a></li>
-    <li title="success story"><a href="#" class="success-story">Success Story</a></li>
-    <li title="event"><a href="#" class="event">Event</a></li>
-    <li title="chatbot"><a href="#" class="chatbot">Chatbot</a></li>
-    <li title="time capsule"><a href="#" class="time-capsule">Time Capsule</a></li>
-    
-    <li title="about"><a href="#" class="active about">about</a></li>
-    <li title="archive"><a href="#" class="archive">archive</a></li>
-    <li title="contact"><a href="#" class="contact">contact</a></li>
-    <li><a href="#" class="login-logout">Login</a></li>
-        <li><a href="#" class="login-logout">Logout</a></li>
-</ul>
-  
-<ul class="menu-bar">
-    <li><a href="#" class="menu-button">Menu</a></li>
-    <li><a href="/">Home</a></li>
-  
-    <li> <a class="navbar-brand" href="/listings">Profile</a></li>
-    <li> <a class="navbar-brand" href="/listings/new">Add Profile</a></li>
-    <li><a href="#">Editorial</a></li>
-    <li><a href="#">About</a></li>
-    <% if(!currUser) { %> 
-     <li><a class="nav-link active" aria-current="page" href="/signup"><b>Sign Up</b></a></li> 
-      <li><a class="nav-link" href="/login"><b>Log in</b></a></li>
-      <% } %>
-      <% if(currUser) { %> 
-      
-      <li><a class="nav-link" href="/logout">Logout</a></li>
-   <% } %>
-</ul>
-
-<!-- Include jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".menu-button").click(function(){
-            $(".menu-bar").toggleClass("open");
-        });
-    });
-</script>
+     
+     <li class="logo">
+         
+         <li class="logo1">
+             <a href="https://ai.visheshpandey.com/">
+                 <i class="fa-solid fa-graduation-cap">?</i>
+             </a>
+         </li>
+   
+     
+     
+     <li title="home"><a href="#" class="menu-button home">menu</a></li>
+     <li title="about"><a href="/listings/new" class="active about">about</a></li>
+     <li title="new"><a href="/listings" class="contact">contact</a></li>
+     
+     <li title="pencil"><a href="/new" class="pencil">pencil</a></li>
+     <li title="portal donation"><a href="/donation" class="portal-donation">Portal Donation</a></li>
+     <li title="posts"><a href="/feedback" class="posts">Posts</a></li>
+     <li title="Chatbot">
+         <a href="https://ai.visheshpandey.com/" class="chatbot">
+             <i class="fas fa-comments icon"></i>Chatbot
+         </a>
+     </li>
+ 
+     
+     <li title="event"><a href="#" class="event">Event</a></li>
+     <li title="chatbot"><a href="#" class="chatbot">Chatbot</a></li>
+     
+     
+     
+     <li title="contact"><a href="#" class="contact">contact</a></li>
+     <li><a href="#" class="login-logout">Login</a></li>
+         <li><a href="#" class="login-logout">Logout</a></li>
+ </ul>
+   
+ <ul class="menu-bar">
+     <li><a href="#" class="menu-button">Menu</a></li>
+     <li><a href="/">Home</a></li>
+     
+     
+         <li><a class="nav-link active" aria-current="page" href="/signup"><b>Sign Up</b></a></li> 
+         <li><a class="nav-link" href="/login"><b>Log in</b></a></li>
+     
+         
+         <li><a class="navbar-brand" href="/listings">Profile</a></li>
+         <li><a class="navbar-brand" href="/listings/new">Add Profile</a></li>
+     
+     <li><a class="nav-link" href="/logout">Logout</a></li>
+     
+     <li><a class="nav-link" href="https://ai.visheshpandey.com/">Help-Bot</a></li>
+     
+ </ul>
+ 
+ 
+ 
+ 
+ 
+ <!-- Include jQuery -->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script>
+     $(document).ready(function(){
+         $(".menu-button").click(function(){
+             $(".menu-bar").toggleClass("open");
+         });
+     });
+ 
+     $(document).ready(function(){
+         $(".active").click(function(){
+             $(".menu-bar").toggleClass("open");
+         });
+     });
+ </script>

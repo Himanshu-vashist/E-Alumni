@@ -151,13 +151,14 @@ app.use((err,req,res,next)=>{
     console.log("server is listening on port 8080");
   });
 
-  app.get('/someRoute', (req, res) => {
-    res.render('someTemplate', { currUser: req.user });
+  app.get('/', (req, res) => {
+    res.render('index', { currUser: req.user });  // Assuming req.user contains the user info
 });
 
-app.use((req, res, next) => {
-  res.locals.currUser = req.user;
-  next();
-});
+
+// app.use((req, res, next) => {
+//   res.locals.currUser = req.user;
+//   next();
+// });
 
 
