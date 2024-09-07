@@ -1,263 +1,376 @@
 <%- layout("/layouts/boilerplate.ejs") %>
 
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Arial', sans-serif;
-        background-color: #f8f9fa;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Alumni Community</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
 
-    .hero-section {
-        background: linear-gradient(135deg, #007bff, #6f42c1); /* Gradient background */
-        color: #fff;
-        padding: 100px 20px;
-        text-align: center;
-        margin-top: 5%;
-    }
+        /* Hero Section */
+        .hero-section {
+           background-color: rgb(68,19,238); /* Gradient background */
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            margin-top: 5%;
+            /* Gradient background */
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            margin-top: 0; /* Remove the extra space */
 
-    .hero-section h1 {
-        font-size: 3.5em;
-        margin-bottom: 20px;
-        font-weight: bold;
-    }
+        }
 
-    .hero-section p {
-        font-size: 1.5em;
-        margin-bottom: 40px;
-    }
+        .hero-section h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
 
-    .btn-container {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
+        .hero-section p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+        }
 
-    .btn-action {
-        padding: 15px 30px;
-        font-size: 1.2em;
-        text-decoration: none;
-        color: #fff;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-        min-width: 200px;
-        text-align: center;
-    }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-    .btn-register {
-        background-color: #28a745;
-    }
+        .btn-action {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            min-width: 200px;
+            text-align: center;
+        }
 
-    .btn-register:hover {
-        background-color: #218838;
-    }
+        .btn-register {
+            background-color: #28a745;
+        }
 
-    .btn-login {
-        background-color: #ffc107;
-        color: #343a40;
-    }
+        .btn-register:hover {
+            background-color: #218838;
+        }
 
-    .btn-login:hover {
-        background-color: #e0a800;
-    }
+        .btn-login {
+            background-color: #ffc107;
+            color: #343a40;
+        }
 
-    .content-section {
-        padding: 50px 20px;
-        text-align: center;
-    }
+        .btn-login:hover {
+            background-color: #e0a800;
+        }
 
-    .content-section h2 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        color: #343a40;
-    }
+        /* Content Sections */
+        .content-section, .content-section1, .posts-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
 
-    .content-section p {
-        font-size: 1.2em;
-        margin-bottom: 40px;
-        color: #6c757d;
-    }
+        .content-section h2,
+        .content-section1 h2,
+        .posts-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
 
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-    }
+        .content-section p,
+        .content-section1 p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: #6c757d;
+        }
 
-    .card {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        text-align: left;
-        padding: 20px;
-    }
+        /* Grid Container for News and Events */
+        .grid-container {
+            display: flex;
+            
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 20px 0;
+            gap: 20px;
+        }
 
-    .card h3 {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-        color: #343a40;
-    }
+        .card {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            background-color: #fff;
+            padding: 20px;
+            margin: 0 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-    .card p {
-        font-size: 1em;
-        color: #6c757d;
-    }
+        .card h3 {
+            margin-top: 0;
+            color: #343a40;
+        }
 
-    .stats-container {
-        background-color: #343a40;
-        color: #fff;
-        padding: 50px 20px;
-        text-align: center;
-    }
+        .card p {
+            color: #6c757d;
+            flex-grow: 1;
+        }
 
-    .stats-container h2 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-    }
+        /* Latest Alumni Posts Section */
+        .posts-section {
+            background: #f7f7f7;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 -2px 18px rgba(0, 0, 0, 0.26);
+            padding-bottom: 20px;
+        }
 
-    .stats-grid {
-        display: flex;
-        justify-content: center;
-        gap: 50px;
-    }
+        .post {
+            display: inline-block;
+            vertical-align: top;
+            width: 100%;
+            
+            margin-right: 1rem;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            scroll-snap-align: start;
+        }
 
-    .stat-item {
-        font-size: 2em;
-        color: #ffc107;
-    }
+        .post h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            color: #343a40;
+        }
 
-    .stat-item p {
-        margin-top: 10px;
-        font-size: 1.2em;
-        color: #fff;
-    }
+        .post p {
+            margin: 0;
+            color: #555;
+        }
 
-    .posts-section {
-        position: relative;
-        bottom: 0;
-        left: 40px; /* Adjust based on your menu width */
-        height: 20%; /* Height for the horizontal scroll area */
-        width: calc(100% - 100px); /* Full width minus the menu width */
-        background: #f7f7f7;
-        overflow-x: auto; /* Horizontal scrolling */
-        overflow-y: hidden; /* Disable vertical scroll */
-        white-space: nowrap; /* Ensure all posts are in one line */
-        padding: 1rem;
-        box-shadow: 0 -2px 18px rgba(0, 0, 0, 0.26);
-    }
+        .view-more {
+            display: inline-block;
+            text-align: center;
+            padding: 1rem;
+            background: #267fdd;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            height: 100%;
+            min-width: 300px;
+            flex: 0 0 auto;
+            margin-top: 1rem;
+        }
 
+        /* Community Statistics */
+        .stats-container {
+            background-color: #343a40;
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
 
-    /* Style for Individual Post */
-    .post {
-        display: inline-block; /* Ensures posts are inline */
-        vertical-align: top; /* Align posts to top */
-        width: 300px; /* Width of each post */
-        height: 100%; /* Ensures consistent height */
-        margin-right: 1rem;
-        background-color: #fff;
-        border-radius: 8px;
-        padding: 1rem;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        .stats-container h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
 
-    .post h4 {
-        margin: 0;
-        font-size: 1.1rem;
-        color: #333;
-    }
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
 
-    .post p {
-        margin: 0.5rem 0 0;
-        color: #555;
-    }
+        .stat-item {
+            font-size: 2.5em;
+            color: #ffc107;
+        }
 
-    /* "View More" Button */
-    .view-more {
-        display: inline-block;
-        text-align: center;
-        padding: 1rem;
-        background: #267fdd;
-        color: white;
-        cursor: pointer;
-        border-radius: 8px;
-        height: 100%;
-    }
-</style>
+        .stat-item p {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #fff;
+        }
 
+        /* Scrollbar Customization */
+        .grid-container::-webkit-scrollbar,
+        .posts-section::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .grid-container::-webkit-scrollbar-thumb,
+        .posts-section::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 10px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-section p {
+                font-size: 1.2em;
+            }
+
+            .btn-action {
+                font-size: 1em;
+                padding: 10px 20px;
+                min-width: 150px;
+            }
+
+            .card, .post, .view-more {
+                width: 250px;
+                height: auto;
+            }
+
+            .stats-grid {
+                gap: 30px;
+            }
+
+            .stat-item {
+                font-size: 2em;
+            }
+        }
+        .img_alm{
+            width: 300px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
 <body>
-    <div class="hero-section">
+    <!-- Hero Section -->
+    <div class="hero-section row">
+      <div class="col-8">
         <h1>Welcome to E-Alumni Community</h1>
         <p>Connecting Alumni, Sharing Knowledge, and Building a Network</p>
         <div class="btn-container">
             <a href="#register" class="btn-action btn-register">Register</a>
             <a href="#login" class="btn-action btn-login">Login</a>
         </div>
+      </div>
+      <div class="col-4 " >
+        <img src="https://d26pkxyw9vw39t.cloudfront.net/assets/us_landing/Hero_image-41d42f715847251e98bd1f264964058b749c53116ef5eecc29f3cebf3d3f8006.png" alt="" class="img_alm">
+      </div>
     </div>
 
+    <!-- Join Us Section -->
     <div class="content-section" id="register">
         <h2>Join Us</h2>
         <p>Become a part of our vibrant alumni community today.</p>
         <div class="btn-container">
-            <a href="/signup/admin" class="btn-action btn-register">Register as Admin</a>
-            <a href="/signup/student" class="btn-action btn-register">Register as Student</a>
+            <a href="/signup" class="btn-action btn-register">Register as Admin</a>
+            <a href="/signup" class="btn-action btn-register">Register as Student</a>
         </div>
     </div>
 
+    <!-- Login Section -->
     <div class="content-section" id="login">
         <h2>Already a Member?</h2>
         <p>Login to access exclusive alumni content and features.</p>
         <div class="btn-container">
-            <a href="/login/student" class="btn-action btn-login">Login as Student</a>
-            <a href="/login/alumni" class="btn-action btn-login">Login as Alumni</a>
+            <a href="/login" class="btn-action btn-login">Login as Student</a>
+            <a href="/login" class="btn-action btn-login">Login as Alumni</a>
         </div>
     </div>
 
+   
+
+
+
+
+
+
+    <!-- Latest Alumni Posts Section -->
     <div class="posts-section">
         <h2>Latest Alumni Posts</h2>
-        <div class="post">
-            <h4>Post Title 1</h4>
-            <p>Short description of post 1...</p>
-        </div>
-        <div class="post">
-            <h4>Post Title 2</h4>
-            <p>Short description of post 2...</p>
-        </div>
-        <div class="post">
-            <h4>Post Title 3</h4>
-            <p>Short description of post 3...</p>
-        </div>
-        <div class="post">
-            <h4>Post Title 4</h4>
-            <p>Short description of post 4...</p>
-        </div>
-        <div class="post">
-            <h4>Post Title 5</h4>
-            <p>Short description of post 5...</p>
+        <div class="grid-container">
+            <div class="post">
+                <h4>Launching My Startup</h4>
+                <p>Excited to announce the launch of my new tech startup focused on AI solutions.</p>
+            </div>
+            <div class="post">
+                <h4>Volunteering at Local Shelter</h4>
+                <p>Spent the weekend volunteering at the downtown animal shelter. It was rewarding!</p>
+            </div>
+            <div class="post">
+                <h4>Published My First Book</h4>
+                <p>Thrilled to share that my first novel has been published and is available now.</p>
+            </div>
+            <div class="post">
+                <h4>Attended Leadership Summit</h4>
+                <p>Participated in a leadership summit that provided valuable insights into effective management.</p>
+            </div>
+            <div class="post">
+                <h4>Alumni Mentor Program</h4>
+                <p>Joined the mentor program to help current students navigate their career paths.</p>
+            </div>
+            
         </div>
         <div class="view-more">View More Posts</div>
     </div>
 
+    <!-- Latest Alumni News Section -->
     <div class="content-section">
         <h2>Latest Alumni News</h2>
         <div class="grid-container">
             <div class="card">
-                <h3>Annual Alumni Meet</h3>
-                <p>Details about our upcoming annual alumni meeting and events.</p>
+                <h3>Annual Alumni Meet 2024</h3>
+                <p>Join us for our Annual Alumni Meet where you can reconnect and network with fellow alumni.</p>
             </div>
             <div class="card">
-                <h3>Alumni Awards</h3>
-                <p>Read about the awards and recognitions given to outstanding alumni.</p>
+                <h3>Alumni Awards Ceremony</h3>
+                <p>Celebrate the achievements of our distinguished alumni at the Awards Ceremony.</p>
             </div>
             <div class="card">
-                <h3>Alumni Contributions</h3>
-                <p>Learn about the contributions of alumni to various causes and initiatives.</p>
+                <h3>Alumni Scholarship Programs</h3>
+                <p>Learn about the new scholarship opportunities available for outstanding students.</p>
             </div>
+            <div class="card">
+                <h3>Alumni Newsletter Launch</h3>
+                <p>Stay updated with the latest news and stories in our newly launched Alumni Newsletter.</p>
+            </div>
+            <div class="card">
+                <h3>Community Service Initiatives</h3>
+                <p>Discover how our alumni are making a difference through various community service projects.</p>
+            </div>
+            <div class="card">
+                <h3>Tech Talks by Alumni</h3>
+                <p>Attend exclusive tech talks delivered by our accomplished alumni in the tech industry.</p>
+            </div>
+            <div class="card">
+                <h3>Alumni Travel Tours</h3>
+                <p>Join our organized travel tours and explore new places with fellow alumni.</p>
+            </div>
+            <div class="card">
+                <h3>Fitness Challenges</h3>
+                <p>Participate in our annual fitness challenges to promote health and wellness within the community.</p>
+            </div>
+           
         </div>
+        <div class="view-more">View More News</div>
     </div>
 
-    <div class="content-section">
+    <!-- Upcoming Alumni Events Section -->
+    <div class="content-section1">
         <h2>Upcoming Alumni Events</h2>
         <div class="grid-container">
             <div class="card">
@@ -272,28 +385,59 @@
                 <h3>Annual Reunion</h3>
                 <p>Celebrate our annual reunion with various activities and gatherings.</p>
             </div>
+            <div class="card">
+                <h3>Leadership Summit</h3>
+                <p>Attend a summit on leadership and innovation for alumni.</p>
+            </div>
+            <div class="card">
+                <h3>Alumni Gala</h3>
+                <p>Join us for a formal gala celebrating the achievements of our alumni.</p>
+            </div>
+            <div class="card">
+                <h3>Startup Pitch</h3>
+                <p>Watch alumni entrepreneurs pitch their startups to investors.</p>
+            </div>
+            <div class="card">
+                <h3>Wellness Retreat</h3>
+                <p>Unwind and rejuvenate with a wellness retreat for alumni.</p>
+            </div>
+            <div class="card">
+                <h3>Mentorship Program</h3>
+                <p>Connect with mentors to guide your professional journey.</p>
+            </div>
         </div>
+        <div class="view-more">View More Events</div>
     </div>
 
+    <!-- Community Statistics Section -->
     <div class="stats-container">
         <h2>Community Statistics</h2>
         <div class="stats-grid">
             <div class="stat-item">
-                <span>50</span>
-                <p>Registered Admins</p>
+                <span>120</span>
+                <p>Registered Alumni</p>
             </div>
             <div class="stat-item">
-                <span>1500+</span>
-                <p>Alumni Members</p>
+                <span>3,500+</span>
+                <p>Active Students</p>
             </div>
             <div class="stat-item">
-                <span>200+</span>
+                <span>500+</span>
                 <p>Posts & Events</p>
+            </div>
+            <div class="stat-item">
+                <span>150</span>
+                <p>Volunteering Hours</p>
+            </div>
+            <div class="stat-item">
+                <span>250+</span>
+                <p>Mentorship Connections</p>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS (optional, if you need Bootstrap features) -->
+    <!-- Optional Bootstrap JS (if needed) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
 </body>
+</html>
