@@ -44,8 +44,10 @@ app.use(methodOverride("_method"));
 app.engine('ejs',ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
+
+
 const feedbackRoutes = require("./routes/feedback");
-app.use("/", feedbackRoutes);
+app.use("/feedback", feedbackRoutes);
 
 app.use('/posts', postsRoutes);
 
@@ -126,9 +128,6 @@ main()
 
 
 
-
-
-
 /* app.get("/", wrapAsync(async (req, res) => {
     
     res.send("hii i am the root");
@@ -157,10 +156,21 @@ main()
     res.render("homepage.ejs");
   })
 
+
+  
+
+
   app.get("/new",(req,res,next)=>{
     //res.redirect("/listings");
     res.render("listings/newpost.ejs");
   })
+
+  
+  app.get("/posts/new",(req,res,next)=>{
+    const {title,content}=req.body;
+    //res.redirect("/listings");
+    res.render('posts',{title,content});
+  });
 
   app.get("/donation",(req,res,next)=>{
     //res.redirect("/listings");
@@ -173,7 +183,15 @@ main()
   })
 
 
+  app.get('/posts', (req, res) => {
+    const samplePosts = [
+        { title: 'First Post', content: 'This is the content of the first post.' },
+        { title: 'Second Post', content: 'Here is some more content, from the second post.' },
+        { title: 'Third Post', content: 'Finally, this is the content of the third post.' }
+    ];
 
+    res.render('posts', { posts: samplePosts });
+});
 
 
 app.use("/listings",listingsRouter);
@@ -195,6 +213,6 @@ app.use((err,req,res,next)=>{
 
 
 
-  app.listen(8080,()=>{
-    console.log("server is listening on port 8080");
+  app.listen(3000,()=>{
+    console.log("server is listening on port 3000");
   });

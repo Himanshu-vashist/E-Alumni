@@ -1,15 +1,14 @@
 <% layout("/layouts/boilerplate.ejs") %>
 <style>
- 
     .container {
-        background-color: #fff;
+        background: linear-gradient(to right, #d3d2f6, #6d9cee);
         padding: 30px;
         border-radius: 12px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 16px rgba(191, 131, 131, 0.2);
         max-width: 600px;
         width: 100%;
         margin-top: 25px; /* Added top margin */
-        margin-bottom: 25px;;
+        margin-bottom: 25px;
     }
     h2 {
         margin-top: 0;
@@ -25,7 +24,8 @@
         font-size: 16px; /* Slightly larger font size for labels */
     }
     input[type="text"],
-    textarea {
+    textarea,
+    select {
         width: 100%;
         padding: 12px; /* Increased padding */
         margin-bottom: 20px; /* Increased space between fields */
@@ -49,18 +49,29 @@
         background-color: #0056b3;
         transform: scale(1.05); /* Slightly enlarges button on hover */
     }
+    .
 </style>
 <body>
-    <div class="container">
-        <h2>Create a New Post</h2>
+    <div class="container ">
+        <h2>Create a New Post <i class="fa-solid fa-camera"></i></h2>
         <form action="/posts/new" method="POST">
             <div>
-                <label for="title">Title:</label>
+                <label for="title" class="formControl">Title:</label>
                 <input type="text" id="title" name="title" required>
             </div>
             <div>
                 <label for="content">Content:</label>
                 <textarea id="content" name="content" rows="5" required></textarea>
+            </div>
+            <div>
+                <label for="type">Type of Post:</label>
+                <select id="type" name="type" required>
+                    <option value="">Select a type</option>
+                    <option value="news">News & Events</option>
+                    <option value="blog">job opening</option>
+                    <option value="announcement">Announcement</option>
+                    <option value="event">success-story</option>
+                </select>
             </div>
             <button type="submit">Submit</button>
         </form>

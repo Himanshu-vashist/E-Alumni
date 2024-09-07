@@ -3,10 +3,11 @@
 <style>
   /* Your existing CSS styles */
   #filters {
+    margin-left: 2px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 2rem;
+    gap: 7rem;
     padding: 1rem;
     background-color: #f8f8f8;
   }
@@ -14,6 +15,7 @@
   .filter {
     text-align: center;
     margin-top: 1rem;
+   
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -28,7 +30,7 @@
   }
 
   .filter p {
-    font-size: 0.8rem;
+    font-size: 1.0rem;
     margin: 0;
   }
 
@@ -49,53 +51,50 @@
     display: flex;
     align-items: center;
   }
+  .listing_profile{
+    margin-left: 20px;
+  }
+.card-img-top{
+  width: 150px;         /* Set the width of the image */
+  height: 150px;        /* Set the height of the image (make it a square) */
+ /* object-fit: cover; */   /* Ensure the image covers the container and stays proportional */
+  border-radius: 50%;   /* Make the image circular */
+  margin: 0 auto;       
+}
+
 </style>
 
 <div id="filters">
-  <!-- Your filter buttons go here -->
-  <div class="filter">
+  <div class="filter" data-filter="bsc">
     <div><i class="fa-solid fa-fire"></i></div>
-    <p>CSE</p>
+    <p>B.sc</p>
   </div>
-  <div class="filter">
+  <div class="filter" data-filter="btech">
     <div><i class="fa-solid fa-campground"></i></div>
-    <p>IT</p>
+    <p>B.tech</p>
   </div>
-  <div class="filter">
+  <div class="filter" data-filter="mtech">
     <div><i class="fa-solid fa-fire"></i></div>
-    <p>ECE</p>
+    <p>M.tech</p>
   </div>
-  <div class="filter">
+  <div class="filter" data-filter="phed">
     <div><i class="fa-solid fa-campground"></i></div>
-    <p>EE</p>
+    <p>Phed</p>
   </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>CHE</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-campground"></i></div>
-    <p>MECH</p>
-  </div>
+</div>
+
+
+
+ 
   
-  <div class="filter">
-    <div><i class="fa-solid fa-campground"></i></div>
-    <p>ALML</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>BIO</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-campground"></i></div>
-    <p>AIEE</p>
-  </div>
+  
+  
   <!-- Add other filters as needed -->
    
   <div class="tax-toggle">
     <div class="form-check-reverse form-switch">
       <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-      <label class="form-check-label" for="flexSwitchCheckDefault">Date of Join </label>
+      <label class="form-check-label" for="flexSwitchCheckDefault">Graduation Year</label>
     </div>
   </div>
   
@@ -103,8 +102,8 @@
 
 <%= success %>
 
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-  <% for(let listing of Listings) { %>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 listing_profile ">
+  <% for(let listing of listings) { %>
     <a href="/listings/<%= listing._id %>" class=" ">
       <div class="card col listing card">
         <img src="<%= listing.image.url %>" 
@@ -137,5 +136,24 @@
       info.style.display = info.style.display === "inline" ? "none" : "inline";
     }
     console.log("clicked");
+  });
+
+  const filters = document.querySelectorAll('.filter');
+  const items = document.querySelectorAll('.item');
+
+  // Loop through all filters
+  filters.forEach(filter => {
+    filter.addEventListener('click', () => {
+      const filterValue = filter.getAttribute('data-filter');
+
+      // Loop through items to show or hide them based on the selected filter
+      items.forEach(item => {
+        if (item.getAttribute('data-category') === filterValue || filterValue === 'all') {
+          item.style.display = 'block'; // Show the item
+        } else {
+          item.style.display = 'none'; // Hide the item
+        }
+      });
+    });
   });
 </script>

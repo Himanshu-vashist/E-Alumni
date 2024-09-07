@@ -21,8 +21,8 @@ exports.createPost = async (req, res) => {
 // Fetch and render all posts
 exports.listPosts = async (req, res) => {
     try {
-        const posts = await Post.find();
-        res.render('../listings/posts', { posts });
+        const posts = await Post.find({});
+        res.render('/posts', { posts });
     } catch (error) {
         console.error("Error fetching posts:", error);
         res.status(500).send("An error occurred while fetching posts.");

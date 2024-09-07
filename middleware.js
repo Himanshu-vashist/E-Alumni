@@ -12,7 +12,11 @@ module.exports.setCurrUser = (req, res, next) => {
 
 // Middleware to check if a user is logged in
 module.exports.isLoggedIn = (req, res, next) => {
+    console.log("Checking if user is logged in or not");
+    
     if (!req.isAuthenticated()) {
+        console.log("Please logged in");
+        
         req.session.redirectUrl = req.originalUrl;
         req.flash("error", "You must be logged in to register as an alumnus!");
         return res.redirect("/login");

@@ -19,6 +19,10 @@ router
 
 // Route for displaying the form
 router.get("/new", isLoggedIn, listingController.renderNewForm);
+// Route for submit the form
+router.post("/new",(req,res)=>{
+  res.send("submit");
+});
 
 // Show, update, and delete routes
 router
