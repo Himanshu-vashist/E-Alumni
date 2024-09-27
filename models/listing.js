@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { type } = require("os");
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
@@ -10,10 +11,7 @@ const listingSchema = new Schema({
     type: String,
     required: true,
   },
-  image: {
-    url: String,
-    filename: String,
-  },
+ 
   graduationYear: {
     type: Number,
     required: true,
@@ -22,11 +20,15 @@ const listingSchema = new Schema({
     type: String,
     required: true,
   },
-  location: {
+  image: {
+    url: String,
+    filename: String,
+  },
+ country: {
     type: String,
     required: true,
   },
-  country: {
+  location: {
     type: String,
     required: true,
   },
@@ -34,7 +36,8 @@ const listingSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  
 });
 
-const Listing = mongoose.model("Listing", listingSchema);
+const Listing = mongoose.model("listings", listingSchema);
 module.exports = Listing;

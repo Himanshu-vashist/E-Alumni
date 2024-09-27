@@ -1,0 +1,180 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Form</title>
+    <link rel="stylesheet" href="new.css"> <!-- Link to external CSS -->
+    <style>
+   /*   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+*/
+.container {
+    margin-top: 1.0rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    height: 550px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Left side with the image */
+.image-section {
+    width: 50%;
+    background: url('https://source.unsplash.com/600x800/?chat,technology') center center/cover no-repeat;
+}
+
+/* Right side with the form */
+.form-section {
+    width: 50%;
+    background-color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+button {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.container:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive for smaller devices */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .image-section {
+        width: 100%;
+        height: 200px;
+    }
+
+    .form-section {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    textarea {
+        padding: 10px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="image-section"></div>
+        <div class="form-section">
+            <h2>Write a Post</h2>
+            <form method="post" action="/chats">
+                <label for="from">From: </label>
+                <input type="text" id="from" name="from" placeholder="Who are you?" required />
+                <br>
+
+                <label for="to">To: </label>
+                <input type="text" id="to" name="to" placeholder="Who are you talking to?" required />
+                <br>
+
+                <label for="message">Message: </label>
+                <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+                <br>
+
+                <button type="submit">Create Chat</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,25 +1,49 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Feedback = require("../models/feedback");
-const wrapAsync = require("../utils/wrapAsync");
-const { validateFeedback, isLoggedIn } = require("../middleware");
+const Feedback = require('../models/feedbackSchema'); // Import the Feedback model
 
-// Render feedback form
-router.get("/",(req,res,next)=>{
-console.log("render feedback form just after loggin check");
-console.log(isLoggedIn);
+// Middleware to validate feedback data
+const validateFeedback = (req, res, next) => {
+    const { name, email, subject, message } = req.body.feedback;
+    if (!name || !email || !subject || !message) {
+        return res.status(400).send('All fields are required.');
+    }
+    // Additional validation logic can go here (e.g., email format)
+    next();
+};
 
-next();
-}, isLoggedIn, (req, res) => {
-    res.render("listings/feedback"); // Make sure this view exists
+// Route to handle feedback form submission
+router.post('/feedback', validateFeedback, async (req, res) => {
+    try {
+        const { name, email, subject, message } = req.body.feedback;
+
+        // Create a new feedback entry
+        const newFeedback = new Feedback({
+            name,
+            email,
+            subject,
+            message
+        });
+
+        // Save feedback to the database
+        await newFeedback.save();
+        res.redirect('/feedback/all'); // Redirect to a thank you page after submission
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error submitting feedback. Please try again later.');
+    }
 });
 
-// Handle feedback submission
-router.post("/", isLoggedIn, validateFeedback, wrapAsync(async (req, res) => {
-    const feedback = new Feedback(req.body.feedback);
-    await feedback.save();
-    req.flash("success", "Thank you for your feedback!");
-    res.redirect("/feedback");
-}));
+// Route to display all feedback (for testing)
+router.get('/feedback/all', async (req, res) => {
+    try {
+        const allFeedback = await Feedback.find();
+        console.log (" feedback data");
+        res.render('feedbackList', { feedbacks: allFeedback });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching feedback. Please try again later.');
+    }
+});
 
 module.exports = router;

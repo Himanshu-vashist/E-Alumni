@@ -1,68 +1,76 @@
 <% layout("/layouts/boilerplate.ejs") %>
+<style>
+  .container{
+    background: linear-gradient(to right, #d3d2f6, #6d9cee);
+  }
+</style>
 <body>
-  <div class="row">
-    <div class="col-8 offset-2">
-      <br/><br/>
-      <h3>Alumni Registration 👩‍🎓👨‍🎓</h3>
-      <form 
-          method="post"
-          action="/listings"
-          novalidate 
-          class="needs-validation"
-          enctype="multipart/form-data">
-         
-         <div class="mb-3">
-              <label for="name" class="form-label">Full Name</label> 
-              <input name="listing[name]" placeholder="Enter your full name" type="text" class="form-control" required />
-          <div class="valid-feedback">Name looks good!</div>    
-          <div class="invalid-feedback">Please enter your full name!</div>    
-         </div> 
+  <div class="container">
+
+    <div class="row">
+      <div class="col-8 offset-2">
+        <br/><br/>
+        <h3>Alumni Registration 👩‍🎓👨‍🎓</h3>
+        <form 
+            method="post"
+            action="/listings"
+            novalidate 
+            class="needs-validation"
+            enctype="multipart/form-data">
            
+           <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label> 
+                <input name="listing[name]" placeholder="Enter your full name" type="text" class="form-control" required />
+            <div class="valid-feedback">Name looks good!</div>    
+            <div class="invalid-feedback">Please enter your full name!</div>    
+           </div> 
+             
+            
+            <div class="mb-3">
+              <label for="bio" class="form-label">Short Bio</label>
+                <textarea name="listing[bio]" placeholder="Tell us something about yourself" class="form-control" required ></textarea>
+                <div class="invalid-feedback">Please enter a short bio!</div> 
+            </div>
+            
+            <div class="mb-3">
+                <label for="graduationYear" class="form-label">Graduation Year</label> 
+                <input name="listing[graduationYear]" placeholder="Enter your graduation year" type="number" class="form-control" required />
+                <div class="invalid-feedback">Please enter your graduation year!</div> 
+            </div> 
+  
+            <div class="mb-3">
+                <label for="degree" class="form-label">Degree</label> 
+                <input name="listing[degree]" placeholder="Enter your degree (e.g., B.Sc., M.A., Ph.D.)" type="text" class="form-control" required />
+                <div class="invalid-feedback">Please enter your degree!</div> 
+            </div> 
+            
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Your Profile Picture</label>
+                <input name="listing[image]" type="file" class="form-control" required />
+                <div class="invalid-feedback">Please upload your profile picture!</div>    
+            </div>
+           
+            <div class="row">
+                <div class="mb-3 col-6">
+                  <label for="country" class="form-label">Country</label>
+                  <input name="listing[country]" placeholder="Enter your country" type="text" class="form-control" required />
+                  <div class="invalid-feedback">Please enter your country!</div> 
+                </div>
+  
+                <div class="mb-3 col-6">
+                  <label for="location" class="form-label">Current City</label>
+                  <input name="listing[location]" placeholder="Enter your current city" type="text" class="form-control" required />
+                  <div class="invalid-feedback">Please enter your current city!</div> 
+                </div>
+            </div>
+  
+            <button type="submit" class="btn btn-dark">
+             Register
+          </button>
           
-          <div class="mb-3">
-            <label for="bio" class="form-label">Short Bio</label>
-              <textarea name="listing[bio]" placeholder="Tell us something about yourself" class="form-control" required ></textarea>
-              <div class="invalid-feedback">Please enter a short bio!</div> 
+            <br/><br/>
           </div>
-          
-          <div class="mb-3">
-              <label for="graduationYear" class="form-label">Graduation Year</label> 
-              <input name="listing[graduationYear]" placeholder="Enter your graduation year" type="number" class="form-control" required />
-              <div class="invalid-feedback">Please enter your graduation year!</div> 
-          </div> 
-
-          <div class="mb-3">
-              <label for="degree" class="form-label">Degree</label> 
-              <input name="listing[degree]" placeholder="Enter your degree (e.g., B.Sc., M.A., Ph.D.)" type="text" class="form-control" required />
-              <div class="invalid-feedback">Please enter your degree!</div> 
-          </div> 
-          
-          <div class="mb-3">
-              <label for="image" class="form-label">Upload Your Profile Picture</label>
-              <input name="listing[image]" type="file" class="form-control" required />
-              <div class="invalid-feedback">Please upload your profile picture!</div>    
-          </div>
-         
-          <div class="row">
-              <div class="mb-3 col-6">
-                <label for="country" class="form-label">Country</label>
-                <input name="listing[country]" placeholder="Enter your country" type="text" class="form-control" required />
-                <div class="invalid-feedback">Please enter your country!</div> 
-              </div>
-
-              <div class="mb-3 col-6">
-                <label for="location" class="form-label">Current City</label>
-                <input name="listing[location]" placeholder="Enter your current city" type="text" class="form-control" required />
-                <div class="invalid-feedback">Please enter your current city!</div> 
-              </div>
-          </div>
-
-          <button type="submit" class="btn btn-dark">
-            <a href="/listings" style="color: inherit; text-decoration: none;">Register</a>
-        </button>
-        
-          <br/><br/>
         </div>
-      </div>
-      </form>
+        </form>
+  </div>
 </body>

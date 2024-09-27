@@ -34,6 +34,17 @@ module.exports.showListing = async (req, res) => {
   res.render("listings/show", { listing });
 };
 
+
+
+
+
+
+
+
+
+
+
+
 module.exports.renderEditForm = async (req, res) => {
   const { id } = req.params;
   const listing = await Listing.findById(id);

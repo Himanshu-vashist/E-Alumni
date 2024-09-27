@@ -72,6 +72,51 @@
    .menu li a.search:before {
      content: "\f002"; /* Search icon */
  }
+
+
+ .menu li a.add-listing:before {
+    content: "\f067"; /* Plus icon */
+}
+
+.menu li a.all-listings:before {
+    content: "\f022"; /* List icon */
+}
+
+.menu li a.write-post:before {
+    content: "\f044"; /* Edit icon */
+}
+
+
+.menu li a.posts1:before {
+    content: "\f1ea"; /* Newspaper icon */
+}
+
+
+.menu li a.portal-donation:before {
+    content: "\f155"; /* Donate icon */
+}
+
+.menu li a.chatbot:before {
+    content: "\f059"; /* Question circle icon */
+}
+
+.menu li a.communication:before {
+    content: "\f03d"; /* Video icon */
+}
+
+.menu li a.event:before {
+    content: "\f0f3"; /* Bell icon */
+}
+
+.menu li a.contact:before {
+    content: "\f0e0"; /* Envelope icon */
+}
+
+.menu li a.login-logout:before {
+    content: "\f2bd"; /* User circle icon */
+}
+
+
  
  .menu li a.archive:before {
      content: "\f187"; /* Archive icon */
@@ -89,14 +134,9 @@
      content: "\f015"; /* Home icon */
  }
  
- .menu li a.contact:before {
-     content: "\f003"; /* Contact icon */
- }
+
  
- /* New icons for the additional items */
- .menu li a.portal-donation:before {
-     content: "\f4c3"; /* Donate icon */
- }
+
  
  .menu li a.posts:before {
      content: "\f044"; /* Pen icon for posts */
@@ -203,62 +243,103 @@
  
  </style>
  
+
+ <ul class="menu">
+    <li class="logo">
+       <li class="logo1">
+          <a href="https://ai.visheshpandey.com/">
+             <i class="fas fa-robot"></i> <!-- Icon updated to a robot representing AI -->
+          </a>
+       </li>
+    </li>
  
- 
-   <ul class="menu">
-     
-     
-     <li class="logo">
-         
-         <li class="logo1">
-             <a href="https://ai.visheshpandey.com/">
-                 <i class="fa-solid fa-graduation-cap">?</i>
-             </a>
-         </li>
-   
-     
-     
-     <li title="home"><a href="#" class="menu-button home">menu</a></li>
-     <li title="about"><a href="/listings/new" class="active about">about</a></li>
-     <li title="new"><a href="/listings" class="contact">contact</a></li>
-     
-     <li title="pencil"><a href="/new" class="pencil">pencil</a></li>
-     <li ><a href="/donation" class="portal-donation"> Portal Donation</a></li>
-     <li title="posts"><a href="/feedback1" class="posts">Posts</a></li>
-     <li title="Chatbot">
-         <a href="https://ai.visheshpandey.com/" class="chatbot">
-             <i class="fas fa-comments icon"></i>Chatbot
-         </a>
-     </li>
-     <li title="event"><a href="https://calendar.google.com/calendar/u/0?cid=aW1oaW1hbnNodXZhc2hpc3RAZ21haWwuY29t" class="event">Event</a></li>
+    <li title="home">
+       <a href="#" class="menu-button home"><i class="fas fa-bars"></i> Menu</a> <!-- Menu icon -->
+    </li>
+    <li title="add new listing">
+        <a href="/listings/new" class="active add-listing"><i class="fas fa-plus-circle"></i> Add New Listing</a> <!-- Plus icon -->
+    </li>
     
-     
- 
-     
-     
-     
-     
-     <li title="contact"><a href="https://contacts.google.com/" class="contact">contact</a></li>
-     <li><a href="#" class="login-logout">Login</a></li>
-         <li><a href="#" class="login-logout">Logout</a></li>
+  
+    <li title="all listings">
+        <a href="/listings" class="active all-listings"><i class="fas fa-th-list"></i> All Listings</a> <!-- List icon -->
+    </li>
+    
+    <li title="write a post">
+        <a href="/chats/new" class="active write-post"><i class="fas fa-edit"></i> Write a Post</a> <!-- Edit icon -->
+    </li>
+    
+    <li title="All Stored Posts">
+        <a href="/chats" class="posts1">
+            <i class="fas fa-newspaper"></i> All Posts
+        </a> <!-- Newspaper icon -->
+    </li>
+    
+    
+    
+    <li>
+        <a href="/donation" class="portal-donation"><i class="fas fa-donate"></i> Portal Donation</a> <!-- Donation icon -->
+    </li>
+    
+    <li title="Helpbot">
+        <a href="https://ai.visheshpandey.com/" class="chatbot">
+            <i class="fas fa-question-circle"></i> Helpbot
+        </a>
+    </li>
+    
+    <li title="Audio and Video Call">
+        <a href="https://video-call-demo-teal.vercel.app/" class="communication">
+            <i class="fas fa-video"></i> Audio & Video Call
+        </a>
+    </li>
+    
+    <li title="Upcoming Events">
+        <a href="https://calendar.google.com/calendar/u/0?cid=aW1oaW1hbnNodXZhc2hpc3N0QGdtYWlsLmNvbSI" class="event">
+            <i class="fas fa-bell"></i> Event
+        </a> <!-- Bell icon -->
+    </li>
+    
+    
+    <li title="Contact">
+        <a href="https://contacts.google.com/" class="contact">
+            <i class="fas fa-envelope"></i> Contact
+        </a> <!-- Envelope icon -->
+    </li>
+    
+    <li>
+        <a href="/logout" class="login-logout">
+            <i class="fas fa-user-circle"></i> Login
+        </a> <!-- User circle icon -->
+    </li>
+    
+    
  </ul>
-   
+ 
  <ul class="menu-bar">
-     <li><a href="#" class="menu-button">Menu</a></li>
-     <li><a href="/">Home</a></li>
-     
-     
-         <li><a class="nav-link active" aria-current="page" href="/signup"><b>Sign Up</b></a></li> 
-         <li><a class="nav-link" href="/login"><b>Log in</b></a></li>
-     
-         
-         <li><a class="navbar-brand" href="/listings">Profile</a></li>
-         <li><a class="navbar-brand" href="/listings/new">Add Profile</a></li>
-     
-     <li><a class="nav-link" href="/logout">Logout</a></li>
-     
-     <li><a class="nav-link" href="https://ai.visheshpandey.com/">Help-Bot</a></li>
-     
+    <li>
+       <a href="#" class="menu-button"><i class="fas fa-bars"></i> Menu</a> <!-- Menu icon -->
+    </li>
+    <li>
+       <a href="/"><i class="fas fa-home"></i> Home</a> <!-- Home icon added here -->
+    </li>
+    <li>
+       <a class="nav-link active" aria-current="page" href="/signup"><i class="fas fa-user-plus"></i> <b>Sign Up</b></a> <!-- Sign up icon -->
+    </li>
+    <li>
+       <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> <b>Log in</b></a> <!-- Log in icon -->
+    </li>
+    <li>
+       <a class="navbar-brand" href="/listings"><i class="fas fa-user"></i> Profile</a> <!-- Profile icon -->
+    </li>
+    <li>
+       <a class="navbar-brand" href="/listings/new"><i class="fas fa-user-edit"></i> Add Profile</a> <!-- Add Profile icon -->
+    </li>
+    <li>
+       <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a> <!-- Logout icon -->
+    </li>
+    <li>
+       <a class="nav-link" href="https://ai.visheshpandey.com/"><i class="fas fa-question-circle"></i> Help-Bot</a> <!-- Help icon -->
+    </li>
  </ul>
  
  

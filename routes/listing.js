@@ -7,22 +7,28 @@ const multer = require("multer");
 const { storage } = require("../cloudConfig");
 const upload = multer({ storage });
 
-router
-  .route("/")
-  .get(wrapAsync(listingController.index))
-  .post(
-    isLoggedIn,
-    upload.single("listing[image]"),
-    validateListing,
-    wrapAsync(listingController.createListing)
-  );
+// Route for displaying the list of items (GET request)
+router.get("/", wrapAsync(listingController.index));
 
-// Route for displaying the form
+// Route for creating a new item (POST request)
+router.post(
+  "/", 
+  isLoggedIn,
+  upload.single("listing[image]"),
+  validateListing,
+  wrapAsync(listingController.createListing)
+);
+
+// Route for displaying the form to create a new item
 router.get("/new", isLoggedIn, listingController.renderNewForm);
-// Route for submit the form
-router.post("/new",(req,res)=>{
-  res.send("submit");
-});
+
+// Optional: Route for handling form submissions if needed separately
+router.post("/new",
+  isLoggedIn,
+  upload.single("listing[image]"),
+  validateListing,
+  wrapAsync(listingController.createListing)
+);
 
 // Show, update, and delete routes
 router

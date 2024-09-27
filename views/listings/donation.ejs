@@ -4,7 +4,7 @@
     <style>
        
         .container {
-            background-color: #fff;
+            background: linear-gradient(to right, #d3d2f6, #6d9cee);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -52,11 +52,14 @@
             background-color: #218838;
             transform: scale(1.05);
         }
+        .btnSub{
+            background-color: black;
+        }
     </style>
 
 <body>
     <div class="container">
-        <h2>Make a Donation</h2>
+        <h2>Make a Donation <i class="fa-solid fa-indian-rupee-sign"></i></h2>
         <form id="donationForm" action="/donate" method="POST">
             <div>
                 <label for="name">Name:</label>
@@ -74,7 +77,7 @@
                 <label for="message">Message (optional):</label>
                 <textarea id="message" name="message" rows="4"></textarea>
             </div>
-            <a href="https://razorpay.me/@nishantkumar263" class="btn btn-primary">Donate</a>
+            <a href="https://razorpay.me/@nishantkumar263" class="btn btn-primary btnSub">Donate</a>
 
         </form>
     </div>
